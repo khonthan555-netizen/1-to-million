@@ -1,5 +1,21 @@
 # Cloud House Pipeline
 
+## เปิดพรีวิว
+
+ลิงก์ส่วนตัว: https://cloud-house-pipeline-preview.mauvepike65.chatgpt.site
+ใช้บัญชีเจ้าของ Site เพื่อเปิดดู ฉากปัจจุบันเป็นพื้นและลูกบาศก์สำหรับตรวจ pipeline
+
+index.html ที่ root เป็น source ของ Vite การเปิดเป็นไฟล์ดิบในแผงไฟล์อาจไม่โหลด JS/CSS
+ให้ใช้ลิงก์พรีวิว, dev server หรือ build output
+สร้างไฟล์ preview ที่รวม JS/CSS/GLB ทั้งหมดด้วย npm run build แล้ว npm run standalone
+ผลอยู่ artifacts/cloud-house-preview.html โดยไม่ต้องโหลด dependencies จากภายนอกระหว่างเปิด
+การวาด 3D ยังต้องอาศัย WebGL และการอนุญาต JavaScript ของตัวแสดง HTML ที่ใช้
+ถ้าแผงไฟล์จำกัดสคริปต์ ให้เปิดลิงก์พรีวิวในเบราว์เซอร์
+
+ตรวจ WebGL/GLB และ responsive layout ด้วย npm run qa เมื่อมี Chromium ใน PATH
+หรือกำหนด BROWSER_BIN เป็นพาธ Chrome/Chromium ที่ต้องการ
+การตรวจนี้ใช้ desktop และ mobile viewport จำลอง ไม่แทนการทดสอบโทรศัพท์จริง
+
 ฐานระบบสร้างโมเดลด้วย Blender บนคลาวด์ แล้วส่งออก GLB ให้ Three.js
 4Argon วางแผน → agent ผลิตและทดสอบ → GitHub เก็บงาน → เว็บเปิดดูผล
 
