@@ -26,6 +26,7 @@ Repo: khonthan555-netizen/1-to-million
 - Site preview: https://cloud-house-pipeline-preview.mauvepike65.chatgpt.site
 - เผยแพร่ Site ส่วนตัวสำเร็จ version appgprj_6adf94e77d708191b59442c25ea9c7d2~appgver_256c6877b1f48191966194d938f6ddd4
 - GitHub runner รอบแรกพบ NumPy ขาดใน Blender Python; เพิ่ม python3-numpy ใน CI/devcontainer และตรวจ dependency ก่อนสร้างฉากแล้ว
+- GitHub Actions หลังแก้ผ่านทุกขั้น: run 40374703891, job 121754472960, code commit 72a88e1d9ab31fddf3a7c89718edfa1d5cf57a0a (pipeline, standalone และ upload artifact สำเร็จ)
 - npm install ผ่าน
 - npm run pipeline ผ่านทั้ง check, model, verify และ build
 - Blender 4.3.2 สร้าง .blend และ GLB 3,580 bytes สำเร็จ
@@ -35,12 +36,11 @@ Repo: khonthan555-netizen/1-to-million
 
 ## ยังไม่ได้ยืนยัน
 - เปิด Codespaces ใหม่หรือ build Docker image
-- ผล GitHub Actions หลังแก้ dependency NumPy
 - การสัมผัสบนโทรศัพท์จริง (WebGL บน desktop/mobile viewport จำลองผ่านแล้ว)
 - บ้านสองชั้น, WASD/joystick, collision, บันได, ประตู และกลางวัน/กลางคืน
 
 ## งานถัดไป
-1. ตรวจ CI บน PR #1 หลังแก้ dependency
+1. รักษาผล CI บน PR #1 เมื่อเพิ่มโค้ดขั้นถัดไป
 2. รับสเปกบ้านจาก 4Argon
 3. เพิ่มบ้านและระบบเดิน พร้อมทดสอบทางเข้า บันได ประตู และมือถือ
 4. อัปเดต Site preview ให้ตรงกับโมเดลใหม่
