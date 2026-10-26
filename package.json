@@ -1,0 +1,16 @@
+{
+  "name": "cloud-house-pipeline", "version": "0.1.0", "private": true, "type": "module",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "check": "node scripts/check-environment.mjs",
+    "model": "node scripts/generate.mjs",
+    "verify": "node scripts/verify-model.mjs",
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "standalone": "node scripts/standalone.mjs",
+    "qa": "node scripts/check-preview.mjs",
+    "pipeline": "npm run check && npm run model && npm run verify && npm run build"
+  },
+  "dependencies": { "three": "0.186.1" },
+  "devDependencies": { "vite": "8.3.5", "puppeteer-core": "25.16.0" }
+}

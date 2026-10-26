@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cloud House · Pipeline Test</title>
+<style>body{margin:0;background:#f4f6f2;color:#17362b;font:16px system-ui,sans-serif}header,footer{padding:24px}header{display:flex;justify-content:space-between;gap:16px}header strong{font-size:24px}#viewport{min-height:280px}p{line-height:1.7}a{color:#245c45}.preview-link{display:inline-block;padding:10px 16px;border:1px solid #729684;border-radius:8px;text-decoration:none}</style>
+</head>
+<body><main><header><strong>Cloud House</strong><span>ฉากทดสอบระบบ</span></header><div id="viewport"></div><footer><span id="status" role="status">กำลังเปิดฉาก 3D…</span><p>ลากเพื่อหมุน · เลื่อนเพื่อซูม · บนมือถือใช้สองนิ้วซูม<br>ขั้นนี้ตรวจการโหลดโมเดล ระบบเดินชมจะเพิ่มหลังจากฐานระบบผ่าน</p><a class="preview-link" href="https://cloud-house-pipeline-preview.mauvepike65.chatgpt.site" target="_blank" rel="noopener">เปิดพรีวิวผ่านเว็บไซต์</a><noscript><p>หน้านี้ต้องใช้ JavaScript กรุณาเปิดพรีวิวผ่านเว็บไซต์ด้านบน</p></noscript></footer></main>
+<script>setTimeout(function(){if(!window.cloudHouseBooted){document.querySelector('#status').textContent='พรีวิวไฟล์ต้นฉบับโหลดแอป 3D ไม่ได้ กรุณากดเปิดพรีวิวผ่านเว็บไซต์';document.body.dataset.state='startup-error';}},5000);</script>
+<script type="module" src="/web/main.js"></script></body></html>
