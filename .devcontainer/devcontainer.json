@@ -1,0 +1,8 @@
+{
+  "name": "Cloud Blender + Three.js",
+  "build": { "dockerfile": "Dockerfile" },
+  "remoteUser": "node",
+  "forwardPorts": [5173],
+  "postCreateCommand": "npm ci && npm run pipeline",
+  "portsAttributes": { "5173": { "label": "3D preview", "onAutoForward": "notify" } }
+}

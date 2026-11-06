@@ -1,0 +1,6 @@
+node_modules/
+dist/
+artifacts/
+public/models/*.glb
+__pycache__/
+*.blend1
