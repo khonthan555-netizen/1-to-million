@@ -21,5 +21,8 @@ Branch: codex/villa-scroll-experience
 
 ## Hosting
 Existing owner-private Site: appgprj_6adf94e77d708191b59442c25ea9c7d2
-https://cloud-house-pipeline-preview.mauvepike65.chatgpt.site
+https://cloud-house-pipeline-preview.khonthan555537258.chatgpt.site
 Preserve audience and Site identity on future updates.
+
+Publication succeeded: deployment appgdep_6aede8c941408191bcbc99ab012f91da.
+Standalone HTML rendered with external asset requests blocked.

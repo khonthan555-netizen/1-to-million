@@ -52,4 +52,4 @@ is retained as an independent cloud-pipeline test (`npm run model`, `npm run ver
 - `web/style.css` and `index.html`: editorial presentation and progress navigation.
 - `status.md`: current task status and verification limits.
 
-Hosted privately at https://cloud-house-pipeline-preview.mauvepike65.chatgpt.site
+Hosted privately at https://cloud-house-pipeline-preview.khonthan555537258.chatgpt.site
