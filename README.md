@@ -1,69 +1,55 @@
-# Cloud House Pipeline
+# Villa Serein — architecture, revealed
 
-## เปิดพรีวิว
+A single-page architectural experience built with Three.js, GSAP ScrollTrigger and Lenis.
+The procedural villa separates vertically into five independently modeled layers:
+roof/pergola, private suites, terrace/ceiling slab, living/kitchen, and foundation/pool landscape.
+The final section reassembles the building with a short damped settling motion.
 
-ลิงก์ส่วนตัว: https://cloud-house-pipeline-preview.mauvepike65.chatgpt.site
-ใช้บัญชีเจ้าของ Site เพื่อเปิดดู ฉากปัจจุบันเป็นพื้นและลูกบาศก์สำหรับตรวจ pipeline
-
-index.html ที่ root เป็น source ของ Vite การเปิดเป็นไฟล์ดิบในแผงไฟล์อาจไม่โหลด JS/CSS
-ให้ใช้ลิงก์พรีวิว, dev server หรือ build output
-สร้างไฟล์ preview ที่รวม JS/CSS/GLB ทั้งหมดด้วย npm run build แล้ว npm run standalone
-ผลอยู่ artifacts/cloud-house-preview.html โดยไม่ต้องโหลด dependencies จากภายนอกระหว่างเปิด
-การวาด 3D ยังต้องอาศัย WebGL และการอนุญาต JavaScript ของตัวแสดง HTML ที่ใช้
-ถ้าแผงไฟล์จำกัดสคริปต์ ให้เปิดลิงก์พรีวิวในเบราว์เซอร์
-
-ตรวจ WebGL/GLB และ responsive layout ด้วย npm run qa เมื่อมี Chromium ใน PATH
-หรือกำหนด BROWSER_BIN เป็นพาธ Chrome/Chromium ที่ต้องการ
-การตรวจนี้ใช้ desktop และ mobile viewport จำลอง ไม่แทนการทดสอบโทรศัพท์จริง
-
-ฐานระบบสร้างโมเดลด้วย Blender บนคลาวด์ แล้วส่งออก GLB ให้ Three.js
-4Argon วางแผน → agent ผลิตและทดสอบ → GitHub เก็บงาน → เว็บเปิดดูผล
-
-รอบนี้เป็น fixture พื้นกับลูกบาศก์สำหรับตรวจระบบ บ้านและระบบเดินชมจะเพิ่มตามสเปกถัดไป
-
-## ทำงานจากโทรศัพท์
-
-ใช้ agent ที่เชื่อม Repo นี้และมี cloud executor หรือเปิด GitHub Codespaces
-Repo เก็บโค้ดและสถานะ; โปรแกรมทำงานบน executor ไม่ได้รันอยู่ใน GitHub ตลอดเวลา
-
-### GitHub Codespaces
-
-เปิด branch ที่มีชุดระบบนี้ → Code → Codespaces → Create codespace
-Devcontainer ติดตั้ง Blender, Python, FFmpeg, Chromium และ Node จากนั้นรัน pipeline
-หลัง setup เสร็จ รัน npm run dev และเปิด forwarded port 5173
-โควต้าและการใช้งาน Codespaces/Actions ขึ้นกับบัญชี GitHub
-
-### Cloud ที่มีเครื่องมือแล้ว
-
-ต้องมี Node >=22.12, npm, Blender พร้อม glTF exporter, Python 3, FFmpeg และ Git
+## Run
 
 ```sh
 npm ci
-npm run pipeline
 npm run dev
+npm run build
+npm run standalone
 ```
 
-pipeline ตรวจโปรแกรม → สร้างและบันทึกฉาก → ส่งออก GLB → ใช้ Three.js GLTFLoader ตรวจ geometry → build เว็บ
-ตั้ง BLENDER_BIN หาก Blender ไม่อยู่ใน PATH
-เวอร์ชัน Blender ใน distro อาจต่างจากคลาวด์ปัจจุบัน ต้องให้ pipeline ผ่านในแต่ละ environment
+`npm run standalone` creates `artifacts/villa-serein.html` with embedded scripts, styling and fonts.
+`dist/` is the deployable website. Use a web server for source/build previews.
 
-## ไฟล์และผลลัพธ์
+## Browser checks
 
-- scene/build_test_scene.py: ฉากทดสอบ ขนาดเป็นเมตร
-- scripts/: ตรวจ environment สร้างและตรวจ GLB
-- web/: หน้า orbit preview หมุนและซูมด้วยเมาส์/สัมผัส
-- .devcontainer/: environment สำหรับ Codespaces
-- .github/workflows/pipeline.yml: ตรวจ push/PR และสั่งรันด้วย workflow_dispatch
-- status.md: สถานะล่าสุด
-- reference-video.md: ข้อกำหนดที่สกัดจาก transcript ของผู้ใช้
+```sh
+npx vite preview --port 4173
+PREVIEW_URL=http://localhost:4173 npm run qa
+```
 
-ผลลัพธ์: artifacts/test-scene.blend, public/models/test-scene.glb, dist/
-ไฟล์ที่สร้างซ้ำได้ไม่ commit; Actions เก็บเว็บและ .blend ใน artifact ชื่อ cloud-3d-preview
-Artifact เป็นไฟล์ดาวน์โหลด การเผยแพร่ URL เว็บถาวรยังเป็นงานขั้นถัดไป
-หน้า fixture ยังไม่มี WASD, collision, บันได หรือประตู
+Chromium defaults to `/usr/bin/chromium`; set `BROWSER_BIN` for a different executable.
+Checks cover section navigation, layer separation, reassembly, ambient-motion pause,
+quality toggle, mobile layout and the reduced-motion fallback. Mobile tests use emulation.
 
-## แผนจาก 4Argon
+## Rendering
 
-ระบุขนาดที่ดิน ขนาดอาคาร ความสูงชั้น ผังห้อง ช่องเปิด บันได วัสดุ ภาพอ้างอิง และเกณฑ์ตรวจรับ
-ให้ agent อ่าน status.md ก่อนทำงานและบันทึกผลทดสอบจริงหลังแก้
-ภาพอ้างอิงใช้กำหนดรูปลักษณ์ ส่วนมิติอาคารต้องอ้างจากสเปกหรือแบบที่ยืนยันแล้ว
+- PBR materials with generated travertine and teak texture maps.
+- A procedural floating-point twilight HDR environment, prefiltered with PMREM.
+- Pool water uses the Three.js Water planar-reflection shader and generated wave normals.
+- Merged geometry reduces draw calls; one light casts shadows.
+- Desktop cinematic mode includes BokehPass depth of field; Performance switches to direct rendering.
+- Adaptive quality disables post-processing and lowers pixel ratio on slow devices. 60fps is a target,
+  not a guarantee across all devices or software renderers.
+- Mobile starts in Performance mode, uses smaller reflection targets and a simplified camera path.
+- Reduced motion keeps the villa assembled, the camera static and the water frozen, without depth of field.
+- The motion button pauses ambient animation while keeping deliberate scroll navigation available.
+
+The residence, floor areas and studio identity are illustrative concept content, not a property listing
+or construction specification. The model is created directly in Three.js; the earlier Blender fixture
+is retained as an independent cloud-pipeline test (`npm run model`, `npm run verify`).
+
+## Source map
+
+- `web/villa.js`: architecture, furniture, textures, water and HDR environment.
+- `web/main.js`: camera choreography, layer transforms, scrolling and accessibility.
+- `web/style.css` and `index.html`: editorial presentation and progress navigation.
+- `status.md`: current task status and verification limits.
+
+Hosted privately at https://cloud-house-pipeline-preview.mauvepike65.chatgpt.site
